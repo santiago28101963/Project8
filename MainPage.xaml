@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:Project8.ViewModels"
+             x:Class="Project8.MainPage"
+             BackgroundColor="LightBlue">
+
+    <ContentPage.BindingContext>
+        <viewmodels:VehiculoViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <StackLayout Padding="30,0" Spacing="25">
+
+            <!-- Contenido original -->
+            <Image
+                Source="dotnet_bot.png"
+                HeightRequest="285"
+                Aspect="AspectFit"
+                SemanticProperties.Description="Robot de .NET en un auto de carreras número ocho" />
+
+            <Label 
+               Text="Bienvenido a la página de diseño"
+               Style="{StaticResource Headline}"
+               SemanticProperties.HeadingLevel="Level1" />
+
+            <Label
+                Text="Welcome to &#10;.NET Multi-platform App UI"
+                Style="{StaticResource SubHeadline}"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Bienvenido a la interfaz de aplicación multiplataforma de .NET" />
+
+            <Button
+                x:Name="CounterBtn"
+                Text="Aceptar"
+                HorizontalOptions="Center"
+                Clicked="OnCounterClicked"/>
+
+            <!-- Lista de vehículos -->
+            <Label Text="Vehículos disponibles:" FontAttributes="Bold" FontSize="18" Margin="0,20,0,0"/>
+
+            <!--CollectionView: Es un control de MAUI que permite mostrar listas de datos con más flexibilidad y rendimiento que ListView.-->
+            <!--ItemsSource="{Binding Vehiculos}": Le dice a la vista que los datos que va a mostrar vienen de la propiedad Vehiculos en el ViewModel.-->
+            <CollectionView ItemsSource="{Binding Vehiculos}">
+                <CollectionView.ItemTemplate><!--Aquí se define cómo debe verse cada ítem de la colección Vehiculos.-->
+                    <DataTemplate><!--DataTemplate: Es la plantilla de presentación para cada objeto en la lista. Cada objeto de Vehiculos se mostrará usando esta plantilla.-->
+                        <Frame BorderColor="Gray" Margin="10" Padding="10"><!--Frame: Es un contenedor con borde. Aquí se usa para encerrar visualmente cada vehículo.-->
+
+                            <!--PRIMERA FORMA DE PRESENTACIÓN-->
+                            <!--<StackLayout>
+                                <Label Text="{Binding Marca, StringFormat='Marca: {0}'}" FontAttributes="Bold" FontSize="16" />
+                                <Label Text="{Binding Modelo, StringFormat='Modelo: {0}'}" />
+                                <Label Text="{Binding Año, StringFormat='Año: {0}'}" />
+                                <Label Text="{Binding Precio, StringFormat='Precio: {0:C}'}" />    StringFormat='Precio: {0:C}': Da formato de moneda (por ejemplo, "$ 25,000").
+                            </StackLayout>-->
+
+                            <!--SEGUNDA FORMA DE PRESENTACIÓN-->
+                            <StackLayout>  <!--Agrupa los elementos en forma vertical, uno debajo del otro.-->
+                                <HorizontalStackLayout>
+                                    <Label Text="Marca:" FontAttributes="Bold" />
+                                    <Label Text="{Binding Marca}" />
+                                </HorizontalStackLayout>
+
+                                <HorizontalStackLayout>
+                                    <Label Text="Modelo:" FontAttributes="Bold" />
+                                    <Label Text="{Binding Modelo}" />
+                                </HorizontalStackLayout>
+
+                                <HorizontalStackLayout>
+                                    <Label Text="Año:" FontAttributes="Bold" />
+                                    <Label Text="{Binding Año}" />
+                                </HorizontalStackLayout>
+
+                                <HorizontalStackLayout>
+                                    <Label Text="Precio:" FontAttributes="Bold" />
+                                    <Label Text="{Binding Precio, StringFormat='{0:C}'}" />
+                                </HorizontalStackLayout>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

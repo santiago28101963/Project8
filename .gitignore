@@ -1,0 +1,51 @@
+# 1. Visual Studio
+.vs/
+.vscode/
+.idea/
+# Archivos de configuración de Visual Studio
+.vs2019/
+.vs2017/
+
+# 2. Archivos compilados de C#
+bin/
+obj/
+# Paquete de dependencias de NuGet
+packages/
+
+# 3. Archivos temporales de sistemas operativos
+Thumbs.db
+Desktop.ini
+
+# 4. Archivos de sistema macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# 5. Archivos de sistema Linux
+*~
+
+# 6. Archivos de sistema Windows
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# 7. Archivos de editores de texto
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# 8. Archivos de IDEs (por ejemplo, JetBrains, Rider, etc.)
+.idea/
+
+# 9. Archivos generados por herramientas de prueba
+TestResult/
+*.testresults
+
+# 10. Archivos de contenedores (por ejemplo, Docker)
+.docker/
+
+# 11. Otros archivos de herramientas de desarrollo
+npm-debug.log
+yarn-error.log
+*.log
