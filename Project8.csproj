@@ -64,7 +64,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Resources\Views\Pages\" />
+	  <MauiXaml Update="Resources\Views\Pages\VehiculoPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>
