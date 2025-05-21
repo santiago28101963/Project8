@@ -38,7 +38,7 @@ namespace Project8.ViewModels
 
         public async Task CargarImagenAsync()
         {
-            Imagen = await _vehiculoService.ObtenerImagenDeVehiculoAsync(Vehiculo.Id);
+            //Imagen = await _vehiculoService.ObtenerImagenDeVehiculoAsync(Vehiculo.Id);
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

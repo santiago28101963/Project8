@@ -1,62 +1,33 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewmodels="clr-namespace:Project8.ViewModels"
+             xmlns:models="clr-namespace:Project8.Models"
              x:Class="Project8.Resources.Views.Pages.VehiculoPage"
-             BackgroundColor="#FFFFFF"
-             Title="Vehículos en Venta">
-
-    <ContentPage.BindingContext>
-        <viewmodels:VehiculoViewModel />
-    </ContentPage.BindingContext>
+             Title="Lista de Vehículos">
 
     <ScrollView>
-        <CollectionView ItemsSource="{Binding Vehiculos}" Margin="10">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Frame Margin="10"
-                           CornerRadius="12"
-                           Padding="10"
-                           BackgroundColor="#F5F5F5"
-                           HasShadow="True">
+        <VerticalStackLayout Padding="10" Spacing="10">
+            <CollectionView x:Name="VehiculosCollectionView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Vehiculo">
+                        <Frame BorderColor="LightGray" CornerRadius="10" Padding="10">
+                            <HorizontalStackLayout Spacing="10">
+                                <Image Source="chevrolet1.png"
+                                       WidthRequest="100"
+                                       HeightRequest="100"
+                                       Aspect="AspectFill" />
 
-                        <VerticalStackLayout Spacing="10">
-                            <!-- Imagen del vehículo -->
-                            <Image Source="{Binding Imagen}"
-                                   HeightRequest="180"
-                                   Aspect="AspectFill"
-                                   BackgroundColor="#CCCCCC"
-                                   HorizontalOptions="Center" />
-
-                            <!-- Información del vehículo -->
-                            <Label Text="{Binding Marca}"
-                                   FontSize="20"
-                                   FontAttributes="Bold"
-                                   TextColor="#1B1B1B" />
-
-                            <Label Text="{Binding Modelo}"
-                                   FontSize="18"
-                                   TextColor="#1B1B1B" />
-
-                            <Label Text="{Binding Año}"
-                                   FontSize="16"
-                                   TextColor="#666666" />
-
-                            <Label Text="{Binding Precio, StringFormat='Precio: {0:C}'}"
-                                   FontSize="18"
-                                   TextColor="#0078D7"
-                                   FontAttributes="Bold" />
-
-                            <!-- Botón de acción -->
-                            <Button Text="Ver más"
-                                    BackgroundColor="#005A9E"
-                                    TextColor="White"
-                                    CornerRadius="8"
-                                    HorizontalOptions="Fill" />
-                        </VerticalStackLayout>
-                    </Frame>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                                <VerticalStackLayout>
+                                    <Label Text="{Binding Marca}" FontSize="18" FontAttributes="Bold"/>
+                                    <Label Text="{Binding Modelo}" />
+                                    <Label Text="{Binding Año}" />
+                                    <Label Text="{Binding Precio, StringFormat='Precio: {0:C}'}" />
+                                </VerticalStackLayout>
+                            </HorizontalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
+

@@ -12,7 +12,7 @@
     <ScrollView>
         <StackLayout Padding="30,0" Spacing="25">
 
-            <!-- Contenido original -->
+            <!-- Imagen fija superior de bienvenida -->
             <Image
                 Source="dotnet_bot.png"
                 HeightRequest="285"
@@ -34,47 +34,54 @@
                 x:Name="CounterBtn"
                 Text="Aceptar"
                 HorizontalOptions="Center"
-                Clicked="OnCounterClicked"/>
+                Clicked="OnCounterClicked" />
 
-            <!-- Lista de vehículos -->
-            <Label Text="Vehículos disponibles:" FontAttributes="Bold" FontSize="18" Margin="0,20,0,0"/>
+            <!-- Título de sección -->
+            <Label Text="Vehículos disponibles:" FontAttributes="Bold" FontSize="18" Margin="0,20,0,0" />
 
-            <!--CollectionView: Es un control de MAUI que permite mostrar listas de datos con más flexibilidad y rendimiento que ListView.-->
-            <!--ItemsSource="{Binding Vehiculos}": Le dice a la vista que los datos que va a mostrar vienen de la propiedad Vehiculos en el ViewModel.-->
+            <!-- Lista de vehículos con imagen incluida -->
             <CollectionView ItemsSource="{Binding Vehiculos}">
-                <CollectionView.ItemTemplate><!--Aquí se define cómo debe verse cada ítem de la colección Vehiculos.-->
-                    <DataTemplate><!--DataTemplate: Es la plantilla de presentación para cada objeto en la lista. Cada objeto de Vehiculos se mostrará usando esta plantilla.-->
-                        <Frame BorderColor="Gray" Margin="10" Padding="10"><!--Frame: Es un contenedor con borde. Aquí se usa para encerrar visualmente cada vehículo.-->
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="Gray" Margin="10" Padding="10">
+                            <StackLayout>
 
-                            <!--PRIMERA FORMA DE PRESENTACIÓN-->
-                            <!--<StackLayout>
-                                <Label Text="{Binding Marca, StringFormat='Marca: {0}'}" FontAttributes="Bold" FontSize="16" />
-                                <Label Text="{Binding Modelo, StringFormat='Modelo: {0}'}" />
-                                <Label Text="{Binding Año, StringFormat='Año: {0}'}" />
-                                <Label Text="{Binding Precio, StringFormat='Precio: {0:C}'}" />    StringFormat='Precio: {0:C}': Da formato de moneda (por ejemplo, "$ 25,000").
-                            </StackLayout>-->
+                                <!-- Usamos HorizontalStackLayout para imagen y características al lado -->
+                                <HorizontalStackLayout Spacing="15">
 
-                            <!--SEGUNDA FORMA DE PRESENTACIÓN-->
-                            <StackLayout>  <!--Agrupa los elementos en forma vertical, uno debajo del otro.-->
-                                <HorizontalStackLayout>
-                                    <Label Text="Marca:" FontAttributes="Bold" />
-                                    <Label Text="{Binding Marca}" />
+                                    <!-- Imagen del vehículo (al lado de las características) -->
+                                    <Image Source="chevrolet1.png"
+                                           WidthRequest="200"
+                                           HeightRequest="120"
+                                           Aspect="AspectFit"
+                                           VerticalOptions="Center"
+                                           Margin="0,0,10,0" />
+
+                                    <!-- Detalles del vehículo -->
+                                    <StackLayout>
+                                        <HorizontalStackLayout>
+                                            <Label Text="Marca:" FontAttributes="Bold" />
+                                            <Label Text="{Binding Marca}" />
+                                        </HorizontalStackLayout>
+
+                                        <HorizontalStackLayout>
+                                            <Label Text="Modelo:" FontAttributes="Bold" />
+                                            <Label Text="{Binding Modelo}" />
+                                        </HorizontalStackLayout>
+
+                                        <HorizontalStackLayout>
+                                            <Label Text="Año:" FontAttributes="Bold" />
+                                            <Label Text="{Binding Año}" />
+                                        </HorizontalStackLayout>
+
+                                        <HorizontalStackLayout>
+                                            <Label Text="Precio:" FontAttributes="Bold" />
+                                            <Label Text="{Binding Precio, StringFormat='{0:C}'}" />
+                                        </HorizontalStackLayout>
+                                    </StackLayout>
+
                                 </HorizontalStackLayout>
 
-                                <HorizontalStackLayout>
-                                    <Label Text="Modelo:" FontAttributes="Bold" />
-                                    <Label Text="{Binding Modelo}" />
-                                </HorizontalStackLayout>
-
-                                <HorizontalStackLayout>
-                                    <Label Text="Año:" FontAttributes="Bold" />
-                                    <Label Text="{Binding Año}" />
-                                </HorizontalStackLayout>
-
-                                <HorizontalStackLayout>
-                                    <Label Text="Precio:" FontAttributes="Bold" />
-                                    <Label Text="{Binding Precio, StringFormat='{0:C}'}" />
-                                </HorizontalStackLayout>
                             </StackLayout>
                         </Frame>
                     </DataTemplate>

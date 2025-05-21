@@ -1,23 +1,26 @@
-// Project8/Resources/Views/Pages/VehiculoPage.xaml.cs
-using Project8.ViewModels;
+using Project8.Models;
+using Project8.Services;
 
 namespace Project8.Resources.Views.Pages
 {
     public partial class VehiculoPage : ContentPage
     {
-        private readonly VehiculoViewModel _viewModel;
+        private readonly VehiculoService _vehiculoService;
 
         public VehiculoPage()
         {
             InitializeComponent();
-            _viewModel = new VehiculoViewModel();
-            BindingContext = _viewModel;
+            _vehiculoService = new VehiculoService();
+
+            // Llamar al método asincrónico correctamente
+            _ = CargarVehiculosAsync(); // no se espera resultado, así evitamos warning
         }
 
-        protected override async void OnAppearing()
+        // Ahora el método es async porque usamos await dentro
+        private async Task CargarVehiculosAsync()
         {
-            base.OnAppearing();
-            await _viewModel.CargarVehiculosAsync();
+            var vehiculos = await _vehiculoService.ObtenerVehiculosAsync();
+            VehiculosCollectionView.ItemsSource = vehiculos;
         }
     }
 }
