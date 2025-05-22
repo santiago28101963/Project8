@@ -40,53 +40,56 @@
             <Label Text="Vehículos disponibles:" FontAttributes="Bold" FontSize="18" Margin="0,20,0,0" />
 
             <!-- Lista de vehículos con imagen incluida -->
+            <!-- Reemplaza solo el contenido del DataTemplate dentro del CollectionView -->
             <CollectionView ItemsSource="{Binding Vehiculos}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Frame BorderColor="Gray" Margin="10" Padding="10">
-                            <StackLayout>
+                            <Grid ColumnDefinitions="Auto,*,Auto" VerticalOptions="Center" ColumnSpacing="10">
+                                <!-- Imagen izquierda -->
+                                <Image Grid.Column="0"
+                           Source="chevrolet1.png"
+                           WidthRequest="100"
+                           HeightRequest="100"
+                           Aspect="AspectFit"
+                           VerticalOptions="Center" />
 
-                                <!-- Usamos HorizontalStackLayout para imagen y características al lado -->
-                                <HorizontalStackLayout Spacing="15">
+                                <!-- Detalles en el centro -->
+                                <StackLayout Grid.Column="1" Spacing="5">
+                                    <HorizontalStackLayout>
+                                        <Label Text="Marca:" FontAttributes="Bold" />
+                                        <Label Text="{Binding Marca}" />
+                                    </HorizontalStackLayout>
 
-                                    <!-- Imagen del vehículo (al lado de las características) -->
-                                    <Image Source="chevrolet1.png"
-                                           WidthRequest="200"
-                                           HeightRequest="120"
-                                           Aspect="AspectFit"
-                                           VerticalOptions="Center"
-                                           Margin="0,0,10,0" />
+                                    <HorizontalStackLayout>
+                                        <Label Text="Modelo:" FontAttributes="Bold" />
+                                        <Label Text="{Binding Modelo}" />
+                                    </HorizontalStackLayout>
 
-                                    <!-- Detalles del vehículo -->
-                                    <StackLayout>
-                                        <HorizontalStackLayout>
-                                            <Label Text="Marca:" FontAttributes="Bold" />
-                                            <Label Text="{Binding Marca}" />
-                                        </HorizontalStackLayout>
+                                    <HorizontalStackLayout>
+                                        <Label Text="Año:" FontAttributes="Bold" />
+                                        <Label Text="{Binding Año}" />
+                                    </HorizontalStackLayout>
 
-                                        <HorizontalStackLayout>
-                                            <Label Text="Modelo:" FontAttributes="Bold" />
-                                            <Label Text="{Binding Modelo}" />
-                                        </HorizontalStackLayout>
+                                    <HorizontalStackLayout>
+                                        <Label Text="Precio:" FontAttributes="Bold" />
+                                        <Label Text="{Binding Precio, StringFormat='{0:C}'}" />
+                                    </HorizontalStackLayout>
+                                </StackLayout>
 
-                                        <HorizontalStackLayout>
-                                            <Label Text="Año:" FontAttributes="Bold" />
-                                            <Label Text="{Binding Año}" />
-                                        </HorizontalStackLayout>
-
-                                        <HorizontalStackLayout>
-                                            <Label Text="Precio:" FontAttributes="Bold" />
-                                            <Label Text="{Binding Precio, StringFormat='{0:C}'}" />
-                                        </HorizontalStackLayout>
-                                    </StackLayout>
-
-                                </HorizontalStackLayout>
-
-                            </StackLayout>
+                                <!-- Imagen derecha -->
+                                <Image Grid.Column="2"
+                           Source="moto.png"
+                           WidthRequest="100"
+                           HeightRequest="100"
+                           Aspect="AspectFit"
+                           VerticalOptions="Center" />
+                            </Grid>
                         </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+
 
         </StackLayout>
     </ScrollView>
