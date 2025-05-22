@@ -20,6 +20,11 @@ namespace Project8.ViewModels
         public int Año => Vehiculo.Año;
         public decimal Precio => Vehiculo.Precio;
 
+        // ✅ NUEVAS propiedades para que se muestren las imágenes en XAML
+        public string ImagenIzquierda => Vehiculo.ImagenIzquierda;
+        public string ImagenDerecha => Vehiculo.ImagenDerecha;
+
+        // Imagen (opcional si usas otra fuente dinámica de imágenes)
         private ImageSource? _imagen;
         public ImageSource? Imagen
         {
@@ -38,10 +43,12 @@ namespace Project8.ViewModels
 
         public async Task CargarImagenAsync()
         {
-            //Imagen = await _vehiculoService.ObtenerImagenDeVehiculoAsync(Vehiculo.Id);
+            // Imagen dinámica (actualmente deshabilitada)
+            // Imagen = await _vehiculoService.ObtenerImagenDeVehiculoAsync(Vehiculo.Id);
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
+
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
             => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }

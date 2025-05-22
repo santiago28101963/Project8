@@ -46,17 +46,18 @@
                     
                     <DataTemplate>
                         <Frame BorderColor="Gray" Margin="10" Padding="10">
-                            <Grid ColumnDefinitions="Auto,*,Auto" VerticalOptions="Center" ColumnSpacing="10">
+                            <Grid ColumnDefinitions="Auto,*,Auto" VerticalOptions="Center" HorizontalOptions="FillAndExpand" ColumnSpacing="10">
+
                                 <!-- Imagen izquierda -->
                                 <Image Grid.Column="0"
-                           Source="toyota1.png"
-                           WidthRequest="100"
-                           HeightRequest="100"
-                           Aspect="AspectFit"
-                           VerticalOptions="Center" />
+                                           Source="{Binding ImagenIzquierda}"
+                                           WidthRequest="100"
+                                           HeightRequest="100"
+                                           Aspect="AspectFill"
+                                           VerticalOptions="Center" />
 
-                                <!-- Detalles en el centro -->
-                                <StackLayout Grid.Column="1" Spacing="5">
+                                <!-- Datos al centro -->
+                                <StackLayout Grid.Column="1" VerticalOptions="Center">
                                     <HorizontalStackLayout>
                                         <Label Text="Marca:" FontAttributes="Bold" />
                                         <Label Text="{Binding Marca}" />
@@ -80,13 +81,14 @@
 
                                 <!-- Imagen derecha -->
                                 <Image Grid.Column="2"
-                           Source="toyota2.png"
-                           WidthRequest="100"
-                           HeightRequest="100"
-                           Aspect="AspectFit"
-                           VerticalOptions="Center" />
+                                       Source="{Binding ImagenDerecha}"
+                                       WidthRequest="100"
+                                       HeightRequest="100"
+                                       Aspect="AspectFill"
+                                       VerticalOptions="Center" />
                             </Grid>
                         </Frame>
+
                     </DataTemplate>
                     
                 </CollectionView.ItemTemplate>
