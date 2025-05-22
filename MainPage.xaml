@@ -43,12 +43,13 @@
             <!-- Reemplaza solo el contenido del DataTemplate dentro del CollectionView -->
             <CollectionView ItemsSource="{Binding Vehiculos}">
                 <CollectionView.ItemTemplate>
+                    
                     <DataTemplate>
                         <Frame BorderColor="Gray" Margin="10" Padding="10">
                             <Grid ColumnDefinitions="Auto,*,Auto" VerticalOptions="Center" ColumnSpacing="10">
                                 <!-- Imagen izquierda -->
                                 <Image Grid.Column="0"
-                           Source="chevrolet1.png"
+                           Source="toyota1.png"
                            WidthRequest="100"
                            HeightRequest="100"
                            Aspect="AspectFit"
@@ -79,7 +80,7 @@
 
                                 <!-- Imagen derecha -->
                                 <Image Grid.Column="2"
-                           Source="moto.png"
+                           Source="toyota2.png"
                            WidthRequest="100"
                            HeightRequest="100"
                            Aspect="AspectFit"
@@ -87,9 +88,9 @@
                             </Grid>
                         </Frame>
                     </DataTemplate>
+                    
                 </CollectionView.ItemTemplate>
             </CollectionView>
-
 
         </StackLayout>
     </ScrollView>
