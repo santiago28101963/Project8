@@ -40,24 +40,33 @@
             <Label Text="Vehículos disponibles:" FontAttributes="Bold" FontSize="18" Margin="0,20,0,0" />
 
             <!-- Lista de vehículos con imagen incluida -->
-            <!-- Reemplaza solo el contenido del DataTemplate dentro del CollectionView -->
             <CollectionView ItemsSource="{Binding Vehiculos}">
                 <CollectionView.ItemTemplate>
-                    
                     <DataTemplate>
-                        <Frame BorderColor="Gray" Margin="10" Padding="10">
-                            <Grid ColumnDefinitions="Auto,*,Auto" VerticalOptions="Center" HorizontalOptions="FillAndExpand" ColumnSpacing="10">
+                        <Frame BorderColor="Gray"
+                               Margin="10"
+                               Padding="10"
+                               HeightRequest="200"
+                               VerticalOptions="FillAndExpand">
+
+                            <Grid ColumnDefinitions="Auto,*,Auto"
+                                  VerticalOptions="FillAndExpand"
+                                  HorizontalOptions="FillAndExpand"
+                                  ColumnSpacing="10"
+                                  RowDefinitions="Auto, *">
 
                                 <!-- Imagen izquierda -->
                                 <Image Grid.Column="0"
-                                           Source="{Binding ImagenIzquierda}"
-                                           WidthRequest="200"
-                                           HeightRequest="120"
-                                           Aspect="AspectFill"
-                                           VerticalOptions="Center" />
+                                       Source="{Binding ImagenIzquierda}"
+                                       WidthRequest="280"
+                                       HeightRequest="160"
+                                       Aspect="AspectFill"
+                                       VerticalOptions="Center" />
 
                                 <!-- Datos al centro -->
-                                <StackLayout Grid.Column="1" VerticalOptions="Center">
+                                <StackLayout Grid.Column="1"
+                                             VerticalOptions="CenterAndExpand"
+                                             Spacing="5">
                                     <HorizontalStackLayout>
                                         <Label Text="Marca:" FontAttributes="Bold" />
                                         <Label Text="{Binding Marca}" />
@@ -82,18 +91,15 @@
                                 <!-- Imagen derecha -->
                                 <Image Grid.Column="2"
                                        Source="{Binding ImagenDerecha}"
-                                       WidthRequest="200"
-                                       HeightRequest="120"
+                                       WidthRequest="280"
+                                       HeightRequest="160"
                                        Aspect="AspectFill"
                                        VerticalOptions="Center" />
                             </Grid>
                         </Frame>
-
                     </DataTemplate>
-                    
                 </CollectionView.ItemTemplate>
             </CollectionView>
-
         </StackLayout>
     </ScrollView>
 
