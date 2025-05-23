@@ -46,14 +46,14 @@
                         <Frame BorderColor="Gray"
                                Margin="10"
                                Padding="10"
-                               HeightRequest="200"
+                               HeightRequest="280"
                                VerticalOptions="FillAndExpand">
 
                             <Grid ColumnDefinitions="Auto,*,Auto"
-                                  VerticalOptions="FillAndExpand"
+                                  VerticalOptions="Center"
                                   HorizontalOptions="FillAndExpand"
                                   ColumnSpacing="10"
-                                  RowDefinitions="Auto, *">
+                                  RowDefinitions="*">
 
                                 <!-- Imagen izquierda -->
                                 <Image Grid.Column="0"
