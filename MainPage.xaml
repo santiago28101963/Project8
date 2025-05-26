@@ -12,7 +12,7 @@
     <ScrollView>
         <StackLayout Padding="30,0" Spacing="25">
 
-            <!-- Imagen fija superior de bienvenida -->
+            <!-- Imagen fija superior de bienvenida --><!--
             <Image
                 Source="dotnet_bot.png"
                 HeightRequest="285"
@@ -34,7 +34,7 @@
                 x:Name="CounterBtn"
                 Text="Aceptar"
                 HorizontalOptions="Center"
-                Clicked="OnCounterClicked" />
+                Clicked="OnCounterClicked" />-->
 
             <!-- Título de sección -->
             <Label Text="Vehículos disponibles:" FontAttributes="Bold" FontSize="18" Margin="0,20,0,0" />
