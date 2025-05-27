@@ -14,38 +14,17 @@ namespace Project8
         {
             InitializeComponent();
         }
+        private VehiculoViewModel viewModel => BindingContext as VehiculoViewModel;
 
-        protected override async void OnAppearing()
+        private async void BtnMostrarVehiculos_Clicked(object sender, EventArgs e)
         {
-            base.OnAppearing();
+            //LblCargando.IsVisible = true;
 
-            // Es una línea de debug que imprime un mensaje en la ventana de salida (Output) de Visual Studio mientras la app está corriendo.
-            // Sirve para ayudarte a saber si cierta parte del código sí se está ejecutando.
-            // No se muestra en la interfaz del usuario, solo en el panel Output → Debug.
+            await viewModel.CargarVehiculosAsync();
 
-            System.Diagnostics.Debug.WriteLine("Entrando a OnAppearing");
+            LblTituloVehiculos.IsVisible = true;
+            PanelBienvenida.IsVisible = false; // Oculta todo después de cargar
+        }
 
-            if (ViewModel != null)
-            {
-                    System.Diagnostics.Debug.WriteLine("Llamando a ViewModel.CargarVehiculosAsync");
-                    await ViewModel.CargarVehiculosAsync();
-            }
-            else
-            {
-                    System.Diagnostics.Debug.WriteLine("ViewModel es NULL");
-            }
-}
-
-        //private void OnCounterClicked(object sender, EventArgs e)
-        //{
-        //    count++;
-
-        //    if (count == 1)
-        //        CounterBtn.Text = $"Clicked {count} time";
-        //    else
-        //        CounterBtn.Text = $"Clicked {count} times";
-
-        //    SemanticScreenReader.Announce(CounterBtn.Text);
-        //}
     }
 }

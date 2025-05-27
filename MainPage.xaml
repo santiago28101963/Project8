@@ -12,34 +12,53 @@
     <ScrollView>
         <StackLayout Padding="30,0" Spacing="25">
 
-            <!-- Imagen fija superior de bienvenida --><!--
-            <Image
-                Source="dotnet_bot.png"
-                HeightRequest="285"
-                Aspect="AspectFit"
-                SemanticProperties.Description="Robot de .NET en un auto de carreras número ocho" />
+            <!-- Panel de bienvenida -->
+            <StackLayout x:Name="PanelBienvenida" Padding="20" Spacing="10" HorizontalOptions="Center" VerticalOptions="Start">
+                <Image
+                    Source="dotnet_bot.png"
+                    HeightRequest="285"
+                    Aspect="AspectFit"
+                    SemanticProperties.Description="Robot de .NET en un auto de carreras número ocho" />
 
+                <Label 
+                   Text="Bienvenido a la página de diseño"
+                   Style="{StaticResource Headline}"
+                   SemanticProperties.HeadingLevel="Level1" />
+
+                <Label
+                    Text="Welcome to &#10;.NET Multi-platform App UI"
+                    Style="{StaticResource SubHeadline}"
+                    SemanticProperties.HeadingLevel="Level2"
+                    SemanticProperties.Description="Bienvenido a la interfaz de aplicación multiplataforma de .NET" />
+
+                <Button
+                    Text="Mostrar vehículos"
+                    Clicked="BtnMostrarVehiculos_Clicked"
+                    BackgroundColor="DarkBlue"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HorizontalOptions="Center"
+                    Margin="0,30,0,0" />
+
+                <Label
+                    x:Name="LblCargando"
+                    Text="Cargando vehículos..."
+                    FontAttributes="Italic"
+                    TextColor="DarkRed"
+                    IsVisible="False"
+                    Margin="0,14,0,0" />
+            </StackLayout>
+
+            <!-- Título de vehículos con imagen incluida-->
             <Label 
-               Text="Bienvenido a la página de diseño"
-               Style="{StaticResource Headline}"
-               SemanticProperties.HeadingLevel="Level1" />
+                x:Name="LblTituloVehiculos"
+                Text="Vehículos disponibles:"
+                FontAttributes="Bold"
+                FontSize="18"
+                Margin="0,20,0,0"
+                IsVisible="False" />
 
-            <Label
-                Text="Welcome to &#10;.NET Multi-platform App UI"
-                Style="{StaticResource SubHeadline}"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Bienvenido a la interfaz de aplicación multiplataforma de .NET" />
-
-            <Button
-                x:Name="CounterBtn"
-                Text="Aceptar"
-                HorizontalOptions="Center"
-                Clicked="OnCounterClicked" />-->
-
-            <!-- Título de sección -->
-            <Label Text="Vehículos disponibles:" FontAttributes="Bold" FontSize="18" Margin="0,20,0,0" />
-
-            <!-- Lista de vehículos con imagen incluida -->
+            <!-- Lista de vehículos -->
             <CollectionView ItemsSource="{Binding Vehiculos}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -55,7 +74,6 @@
                                   ColumnSpacing="10"
                                   RowDefinitions="*">
 
-                                <!-- Imagen izquierda -->
                                 <Image Grid.Column="0"
                                        Source="{Binding ImagenIzquierda}"
                                        WidthRequest="280"
@@ -63,7 +81,6 @@
                                        Aspect="AspectFill"
                                        VerticalOptions="Center" />
 
-                                <!-- Datos al centro -->
                                 <StackLayout Grid.Column="1"
                                              VerticalOptions="CenterAndExpand"
                                              Spacing="5">
@@ -88,7 +105,6 @@
                                     </HorizontalStackLayout>
                                 </StackLayout>
 
-                                <!-- Imagen derecha -->
                                 <Image Grid.Column="2"
                                        Source="{Binding ImagenDerecha}"
                                        WidthRequest="280"
@@ -102,5 +118,4 @@
             </CollectionView>
         </StackLayout>
     </ScrollView>
-
 </ContentPage>
