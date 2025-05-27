@@ -49,3 +49,5 @@ TestResult/
 npm-debug.log
 yarn-error.log
 *.log
+
+appsettings.local.json
